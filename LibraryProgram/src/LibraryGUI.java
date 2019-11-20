@@ -1,5 +1,6 @@
 import javax.swing.*;
 import BreezySwing.*;
+import java.util.ArrayList;
 
 public class LibraryGUI extends GBFrame {
 	
@@ -17,8 +18,13 @@ public class LibraryGUI extends GBFrame {
 	JButton printBorrowedButton = addButton("Borrowed books",3,1,1,1);
 	JButton printOverdueButton = addButton("Overdue books",3,2,1,1);
 	
+	ArrayList<Library> books = new ArrayList<Library>();
+	
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == newbookButton) {
+			NewBookInput input = new NewBookInput(this, books);
+			
+			
 			
 		}
 		
