@@ -23,6 +23,7 @@ public class LibraryGUI extends GBFrame {
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == newbookButton) {
 			NewBookInput input = new NewBookInput(this, books);
+			input.setVisible(true);
 			
 			
 			
