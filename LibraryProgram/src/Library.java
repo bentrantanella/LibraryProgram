@@ -6,6 +6,8 @@ public class Library {
 	private String author;
 	private String name;
 	private int day;
+	private int month;
+	private int year;
 	private ArrayList<Library> book = new ArrayList<Library>();
 	
 	public Library() {
@@ -13,13 +15,15 @@ public class Library {
 		author = "";
 	}
 	
-	public Library(String bookname, String writer) {
+	public Library(String bookname, String writer, String username, date newdate) {
 		title = bookname;
 		author = writer;
+		name = username;
+		day = newdate.getDay();
 	}
 	
-	public void setAuthor() {
-		
+	public String getAuthor() {
+		return author;
 	}
 	
 	
