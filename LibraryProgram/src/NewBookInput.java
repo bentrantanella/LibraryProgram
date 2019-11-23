@@ -9,7 +9,7 @@ public class NewBookInput extends GBDialog {
 		super (parent);
 		setTitle("New Book");
 		setSize(250,250);
-		setDlgCloseIndicator ("close");
+		setDlgCloseIndicator ("a");
 		
 		this.abook = book;
 	}
@@ -24,10 +24,22 @@ public class NewBookInput extends GBDialog {
 	
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == enterButton) {
-			String name = null;
-			date checkoutdate = new date();
-			abook.add(new Library(titleField.getText(), authorField.getText(), checkoutdate));
+			if (titleField.getText().equals("")) {
+				messageBox("Please enter a title");
+				return;
+			} else if (authorField.getText().equals("")) {
+				messageBox("Please enter an author");
+				return;
+			} else {
+				boolean borrowed = false;
+				String name = null;
+				date checkoutdate = new date();
+				abook.add(new Library(titleField.getText(), authorField.getText(), name, checkoutdate,borrowed));
+				dispose();
+			}
 		}
+		
+		
 	}
 	
 	

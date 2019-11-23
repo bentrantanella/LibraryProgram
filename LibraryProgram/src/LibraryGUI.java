@@ -30,11 +30,13 @@ public class LibraryGUI extends GBFrame {
 		}
 		
 		if (buttonObj == searchButton) {
-			
+			Search search = new Search(this, books);
+			search.setVisible(true);
 		}
 		
 		if (buttonObj == loanButton) {
-			
+			LoanBook loan = new LoanBook(this, books);
+			loan.setVisible(true);
 		}
 		
 		if (buttonObj == returnButton) {
