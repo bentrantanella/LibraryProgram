@@ -39,7 +39,6 @@ public class date {
 	}
 	
 	public void isValid (date newdate) throws InvalidInput {
-		boolean valid = true;
 		
 		int day = newdate.getDay();
 		int month = newdate.getMonth();

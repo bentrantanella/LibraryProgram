@@ -19,6 +19,8 @@ public class LoanBook extends GBDialog {
 		dayField.setVisible(false);
 		yearLabel.setVisible(false);
 		yearField.setVisible(false);
+		nameLabel.setVisible(false);
+		nameField.setVisible(false);
 		checkoutButton.setVisible(false);
 	}
 	
@@ -32,7 +34,9 @@ public class LoanBook extends GBDialog {
 	IntegerField dayField = addIntegerField(0,5,2,1,1);
 	JLabel yearLabel = addLabel ("Year:", 6,1,1,1);
 	IntegerField yearField = addIntegerField(0,6,2,1,1);
-	JButton checkoutButton = addButton("Check out book",6,1,2,1);
+	JLabel nameLabel = addLabel("Name of borrower", 7,1,1,1);
+	JTextField nameField = addTextField("",7,2,1,1);
+	JButton checkoutButton = addButton("Check out book",7,1,2,1);
 	
 	Library searchedbook = new Library();
 	
@@ -74,11 +78,23 @@ public class LoanBook extends GBDialog {
 			dayField.setVisible(true);
 			yearLabel.setVisible(true);
 			yearField.setVisible(true);
+			nameLabel.setVisible(true);
+			nameField.setVisible(true);
 			checkoutButton.setVisible(true);
 			
 		}
 		if (buttonObj == checkoutButton) {
-			
+			searchedbook.setBorrowed(true);
+			date checkoutdate = new date(dayField.getNumber(), monthField.getNumber(), yearField.getNumber());
+			searchedbook.setDate(checkoutdate);
+			searchedbook.setName(nameField.getText());
+			try {
+				checkoutdate.isValid(checkoutdate);
+			} catch (Exception e) {
+				messageBox(e.getMessage());
+				return;
+			}
+			messageBox("You have checked out the book " + searchedbook.getTitle() + " by " + searchedbook.getAuthor() + " on " + checkoutdate.getMonth() + "/" + checkoutdate.getDay() + "/" + checkoutdate.getYear());
 		}
 	}
 }

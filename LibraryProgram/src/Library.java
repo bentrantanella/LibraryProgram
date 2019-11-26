@@ -35,8 +35,16 @@ public class Library {
 		return name;
 	}
 	
+	public void setName(String n) {
+		name = n;
+	}
+	
 	public date getDate() {
 		return date;
+	}
+	
+	public void setDate(date d) {
+		date = d;
 	}
 	
 	public boolean checkBorrowed() {
