@@ -31,10 +31,7 @@ public class NewBookInput extends GBDialog {
 				messageBox("Please enter an author");
 				return;
 			} else {
-				boolean borrowed = false;
-				String name = null;
-				date checkoutdate = new date();
-				abook.add(new Library(titleField.getText(), authorField.getText(), name, checkoutdate,borrowed));
+				abook.add(new Library(titleField.getText(), authorField.getText(), null, null,false));
 				dispose();
 			}
 		}

@@ -20,13 +20,23 @@ public class LibraryGUI extends GBFrame {
 	
 	ArrayList<Library> books = new ArrayList<Library>();
 	
+	public LibraryGUI() {
+		searchButton.setEnabled(false);
+		loanButton.setEnabled(false);
+		returnButton.setEnabled(false);
+		printBorrowedButton.setEnabled(false);
+		printOverdueButton.setEnabled(false);
+	}
+	
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == newbookButton) {
 			NewBookInput input = new NewBookInput(this, books);
 			input.setVisible(true);
 			
-			
-			
+			if (books.size() > 0) {
+				searchButton.setEnabled(true);
+				loanButton.setEnabled(true);
+			}
 		}
 		
 		if (buttonObj == searchButton) {
@@ -37,14 +47,33 @@ public class LibraryGUI extends GBFrame {
 		if (buttonObj == loanButton) {
 			LoanBook loan = new LoanBook(this, books);
 			loan.setVisible(true);
+			
+			for(Library b : books) {
+				if (b.checkBorrowed() == true) {
+					returnButton.setEnabled(true);
+					printBorrowedButton.setEnabled(true);
+					printOverdueButton.setEnabled(true);
+					return;
+				}
+			}
 		}
 		
 		if (buttonObj == returnButton) {
+			ReturnBook r = new ReturnBook(this, books);
+			r.setVisible(true);
 			
+			for (Library b : books) {
+				if (b.checkBorrowed() == true)
+					return;
+			}
+			
+			printBorrowedButton.setEnabled(false);
+			printOverdueButton.setEnabled(false);
 		}
 		
 		if (buttonObj == printBorrowedButton) {
-			
+			PrintBorrowed borrowed = new PrintBorrowed(this, books);
+			borrowed.setVisible(true);
 		}
 		
 		if (buttonObj == printOverdueButton) {

@@ -22,6 +22,7 @@ public class LoanBook extends GBDialog {
 		nameLabel.setVisible(false);
 		nameField.setVisible(false);
 		checkoutButton.setVisible(false);
+		clearButton.setVisible(false);
 	}
 	
 	JLabel loanLabel = addLabel("Enter the title of the book you wish to loan out",1,1,2,1);
@@ -36,7 +37,8 @@ public class LoanBook extends GBDialog {
 	IntegerField yearField = addIntegerField(0,6,2,1,1);
 	JLabel nameLabel = addLabel("Name of borrower", 7,1,1,1);
 	JTextField nameField = addTextField("",7,2,1,1);
-	JButton checkoutButton = addButton("Check out book",7,1,2,1);
+	JButton checkoutButton = addButton("Check out book",8,1,1,1);
+	JButton clearButton = addButton("Clear", 8,2,1,1);
 	
 	Library searchedbook = new Library();
 	
@@ -71,6 +73,8 @@ public class LoanBook extends GBDialog {
 			
 			messageBox("Book found:" + "\n" + "Title: " + searchedbook.getTitle() + "\n" + "Author: " + searchedbook.getAuthor());
 			
+			searchField.setEnabled(false);
+			searchButton.setEnabled(false);
 			dateLabel.setVisible(true);
 			monthLabel.setVisible(true);
 			monthField.setVisible(true);
@@ -81,8 +85,10 @@ public class LoanBook extends GBDialog {
 			nameLabel.setVisible(true);
 			nameField.setVisible(true);
 			checkoutButton.setVisible(true);
+			clearButton.setVisible(true);
 			
 		}
+		
 		if (buttonObj == checkoutButton) {
 			searchedbook.setBorrowed(true);
 			date checkoutdate = new date(dayField.getNumber(), monthField.getNumber(), yearField.getNumber());
@@ -95,6 +101,28 @@ public class LoanBook extends GBDialog {
 				return;
 			}
 			messageBox("You have checked out the book " + searchedbook.getTitle() + " by " + searchedbook.getAuthor() + " on " + checkoutdate.getMonth() + "/" + checkoutdate.getDay() + "/" + checkoutdate.getYear());
+		}
+		
+		if (buttonObj == clearButton) {
+			monthField.setText("");
+			dayField.setText("");
+			yearField.setText("");
+			nameField.setText("");
+			
+			searchField.setEnabled(false);
+			searchButton.setEnabled(false);
+			searchField.setText("");
+			dateLabel.setVisible(false);
+			monthLabel.setVisible(false);
+			monthField.setVisible(false);
+			dayLabel.setVisible(false);
+			dayField.setVisible(false);
+			yearLabel.setVisible(false);
+			yearField.setVisible(false);
+			nameLabel.setVisible(false);
+			nameField.setVisible(false);
+			checkoutButton.setVisible(false);
+			clearButton.setVisible(false);
 		}
 	}
 }
