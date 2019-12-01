@@ -77,7 +77,8 @@ public class LibraryGUI extends GBFrame {
 		}
 		
 		if (buttonObj == printOverdueButton) {
-			
+			PrintOverdue overdue = new PrintOverdue(this, books);
+			overdue.setVisible(true);
 		}
 	}
 

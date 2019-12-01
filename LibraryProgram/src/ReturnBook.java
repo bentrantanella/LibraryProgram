@@ -14,9 +14,9 @@ private ArrayList<Library> abook = new ArrayList<Library>();
 		this.abook = book;
 	}
 	
-	JLabel returnLabel = addLabel("Enter the title of the book you would like to return: ",1,1,1,1);
+	JLabel returnLabel = addLabel("Enter the title of the book you would like to return: ",1,1,2,1);
 	JTextField returnField = addTextField("",2,1,1,1);
-	JButton returnButton = addButton("Return",2,2,1,1);
+	JButton returnButton = addButton("Return",3,1,1,1);
 	
 	Library rbook = new Library();
 	boolean found = false;
@@ -40,9 +40,12 @@ private ArrayList<Library> abook = new ArrayList<Library>();
 				
 				messageBox("You have returned the book " + rbook.getTitle() + " by " + rbook.getAuthor());
 				
+				
+				rbook.setBorrowed(false);
 				rbook.setName(null);
 				rbook.setDate(null);
 				
+				dispose();
 			}
 		}
 	}

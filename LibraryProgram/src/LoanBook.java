@@ -8,7 +8,7 @@ public class LoanBook extends GBDialog {
 	public LoanBook(JFrame parent, ArrayList<Library> book) {
 		super (parent);
 		setTitle("New Book");
-		setSize(300,300);
+		setSize(400,400);
 		setDlgCloseIndicator ("a");
 		this.abook = book;
 		
@@ -28,6 +28,7 @@ public class LoanBook extends GBDialog {
 	JLabel loanLabel = addLabel("Enter the title of the book you wish to loan out",1,1,2,1);
 	JTextField searchField = addTextField("",2,1,1,1);
 	JButton searchButton  = addButton("Search",2,2,1,1);
+	JButton exitButton = addButton("Exit",2,3,1,1);
 	JLabel dateLabel = addLabel("Checkout date:",3,1,2,1);
 	JLabel monthLabel = addLabel("Month:", 4,1,1,1);
 	IntegerField monthField = addIntegerField(0,4,2,1,1);
@@ -87,6 +88,9 @@ public class LoanBook extends GBDialog {
 			checkoutButton.setVisible(true);
 			clearButton.setVisible(true);
 			
+			monthField.requestFocus();
+			monthField.selectAll();
+			
 		}
 		
 		if (buttonObj == checkoutButton) {
@@ -98,9 +102,10 @@ public class LoanBook extends GBDialog {
 				checkoutdate.isValid(checkoutdate);
 			} catch (Exception e) {
 				messageBox(e.getMessage());
-				return;
+				
 			}
 			messageBox("You have checked out the book " + searchedbook.getTitle() + " by " + searchedbook.getAuthor() + " on " + checkoutdate.getMonth() + "/" + checkoutdate.getDay() + "/" + checkoutdate.getYear());
+			
 		}
 		
 		if (buttonObj == clearButton) {
@@ -109,8 +114,8 @@ public class LoanBook extends GBDialog {
 			yearField.setText("");
 			nameField.setText("");
 			
-			searchField.setEnabled(false);
-			searchButton.setEnabled(false);
+			searchField.setEnabled(true);
+			searchButton.setEnabled(true);
 			searchField.setText("");
 			dateLabel.setVisible(false);
 			monthLabel.setVisible(false);
@@ -123,6 +128,10 @@ public class LoanBook extends GBDialog {
 			nameField.setVisible(false);
 			checkoutButton.setVisible(false);
 			clearButton.setVisible(false);
+		}
+		
+		if (buttonObj == exitButton) {
+			dispose();
 		}
 	}
 }

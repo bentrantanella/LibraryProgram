@@ -12,13 +12,7 @@ public class PrintBorrowed extends GBDialog {
 		setDlgCloseIndicator ("a");
 		
 		this.abook = book;
-	}
-	
-	JLabel printLabel = addLabel("All borrowed books:",1,1,1,1);
-	JTextArea booksArea = addTextArea("",2,1,1,1);
-	JButton printButton = addButton("Print",2,2,1,1);
-	
-	public void buttonClicked(JButton buttonObj) {
+		
 		String output = "";
 		
 		for(Library b : abook) {
@@ -26,10 +20,17 @@ public class PrintBorrowed extends GBDialog {
 				date newd = b.getDate();
 				output = output + "Title: " + b.getTitle() + "\n" + "Author: " + b.getAuthor();
 				output = output + "\n" + "Name of borrower: " + b.getName();
-				output = output + "\n" + "Date borrowed: " + newd.getMonth() + "/" + newd.getDay() + "/" + newd.getYear();
+				output = output + "\n" + "Date borrowed: " + newd.getMonth() + "/" + newd.getDay() + "/" + newd.getYear() + "\n" + "\n";
 			}
 		}
 		
+		if (output.contentEquals(""))
+			output = "There are no borrowed books";
+		
 		booksArea.setText(output);
 	}
+	
+	JLabel printLabel = addLabel("All borrowed books:",1,1,1,1);
+	JTextArea booksArea = addTextArea("",2,1,1,1);
+
 }
