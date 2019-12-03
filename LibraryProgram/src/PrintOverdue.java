@@ -24,6 +24,7 @@ public class PrintOverdue extends GBDialog {
 	JButton displayButton = addButton("Print",5,1,1,1);
 	
 	public void buttonClicked(JButton buttonObj) {
+		
 		int month = monthField.getNumber();
 		int day = dayField.getNumber();
 		int year = yearField.getNumber();

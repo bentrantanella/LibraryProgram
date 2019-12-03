@@ -45,6 +45,11 @@ public class LoanBook extends GBDialog {
 	
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == searchButton) {
+			if(searchField.getText().contentEquals("") == true) {
+				messageBox("Enter a title");
+				return;
+			}
+			
 			String title = searchField.getText();
 			
 			String[] booktitles = new String[abook.size()];
@@ -57,8 +62,12 @@ public class LoanBook extends GBDialog {
 			for(int j = 0; j < abook.size(); j++) {
 				if (title.equals(booktitles[j]) == true) {
 					searchedbook = abook.get(j);
-					found = true;
-					break;
+					if(searchedbook.checkBorrowed() == true)
+						continue;
+					else { 
+						found = true;
+						break;
+					}
 				}
 			}
 			

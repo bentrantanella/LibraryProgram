@@ -18,39 +18,42 @@ public class Search extends GBDialog {
 	JTextField searchField = addTextField("",1,2,1,1);
 	JButton searchButton  = addButton("Search",2,1,2,1);
 	
-	JLabel titleLabel = addLabel("",3,1,1,1);
-	JLabel authorLabel = addLabel("",4,1,1,1);
-	JLabel borrowedLabel = addLabel("",5,1,1,1);
+	JTextArea outputArea = addTextArea("",3,1,2,1);
 	
 	
 
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == searchButton) {
+			if(searchField.getText().contentEquals("") == true) {
+				messageBox("Enter a title");
+				return;
+			}
+			
 			String[] booktitles = new String[abook.size()];
 			for(int i = 0; i < abook.size(); i++) {
 				Library book = abook.get(i);
 				booktitles[i] = book.getTitle();
 			}
-			boolean found = false;
+			String output = "";
 			for(int j = 0; j < abook.size(); j++) {
 				if (searchField.getText().equals(booktitles[j]) == true) {
 					Library searchedbook = abook.get(j);
-					titleLabel.setText("Title: " + searchedbook.getTitle());
-					authorLabel.setText("Author: " +searchedbook.getAuthor());
-					borrowedLabel.setText("Checked out: " + searchedbook.checkBorrowed() + "");
+					output = output + "Title: " + searchedbook.getTitle() + "\n" +  "Author: " + searchedbook.getAuthor() + "\n" + "Checked out: " + searchedbook.checkBorrowed() + "\n";
 					
 					if (searchedbook.checkBorrowed() == true) {
 						date newdate = searchedbook.getDate();
-						JLabel nameLabel = addLabel("Name of borrower: " + searchedbook.getName(), 6,1,1,1);
-						JLabel dateLabel = addLabel("Date borrowed: " + newdate.getMonth() + "/" + newdate.getDay() + "/" + newdate.getYear(),7,1,1,1);
-						revalidate();
+						output = output + "Name of borrower: " + searchedbook.getName() + "\n" + "Date borrowed: " + newdate.getMonth() + "/" + newdate.getDay() + "/" + newdate.getYear() + "\n";
 					}
-					found = true;
-					break;
+					
+					
 				}
-				if (found == false)
-					messageBox("There are no books with this title");
+				
 			}
+			if (output == "")
+				output = "There are no books with this title";
+			
+			outputArea.setText(output);
+			outputArea.setEditable(false);
 		}
 	}
 

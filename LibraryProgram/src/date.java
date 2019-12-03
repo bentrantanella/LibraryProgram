@@ -131,6 +131,8 @@ public class date {
 			return true;
 		else if (year2 - year1 == 1 && date1 - date2 <= 351)
 			return true;
+		else if (year2 - year1 > 1)
+			return true;
 		
 
 		
