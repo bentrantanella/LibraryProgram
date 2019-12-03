@@ -12,6 +12,8 @@ public class PrintOverdue extends GBDialog {
 		setDlgCloseIndicator ("a");
 		
 		this.abook = book;
+		
+		outputArea.setVisible(false);
 	}
 	
 	JLabel dateLabel = addLabel("Enter the current date",1,1,1,1);
@@ -22,16 +24,16 @@ public class PrintOverdue extends GBDialog {
 	JLabel yearLabel = addLabel ("Year:", 4,1,1,1);
 	IntegerField yearField = addIntegerField(0,4,2,1,1);
 	JButton displayButton = addButton("Print",5,1,1,1);
+	JTextArea outputArea = addTextArea("",6,1,2,1);
 	
 	public void buttonClicked(JButton buttonObj) {
-		
+		outputArea.setText("");
+		outputArea.setVisible(true);
 		int month = monthField.getNumber();
 		int day = dayField.getNumber();
 		int year = yearField.getNumber();
 		String output = "";
 		date rdate = new date(day, month, year);
-		
-		JTextArea outputArea = addTextArea("",6,1,2,1);
 		
 		for(int j = 0; j < abook.size(); j++) {
 			Library book = abook.get(j);

@@ -110,7 +110,7 @@ public class date {
 		}
 		
 		int total = adder[month-1] + day;
-		System.out.println(total);
+		
 		return total;
  
 		

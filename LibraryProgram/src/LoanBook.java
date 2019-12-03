@@ -103,6 +103,11 @@ public class LoanBook extends GBDialog {
 		}
 		
 		if (buttonObj == checkoutButton) {
+			if(nameField.getText().contentEquals("") == true) {
+				messageBox("Enter a name");
+				return;
+			}
+			
 			searchedbook.setBorrowed(true);
 			date checkoutdate = new date(dayField.getNumber(), monthField.getNumber(), yearField.getNumber());
 			searchedbook.setDate(checkoutdate);
