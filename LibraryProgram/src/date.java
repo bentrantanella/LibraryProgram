@@ -38,7 +38,7 @@ public class date {
 		year = y;
 	}
 	
-	public date isValid (date newdate) throws InvalidInput {
+	public void isValid (date newdate) throws InvalidInput {
 		
 		int day = newdate.getDay();
 		int month = newdate.getMonth();
@@ -53,19 +53,42 @@ public class date {
 		boolean isleap = isLeap(year);
 		
 		if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day > 31) {
-			newdate.setDay(31);
 			throw new InvalidInput("Invalid day");
 		} else if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
-			newdate.setDay(30);
 			throw new InvalidInput("Invalid day");
 		} else if ((month == 2 && isleap == true && day > 29) || (month == 2 && isleap == false && day > 28)) {
-			if (isleap == true)
-				newdate.setDay(29);
-			else newdate.setDay(28);
 			throw new InvalidInput("Invalid day");
 		}
 		
-		return newdate;
+	}
+	
+	public date changeDate(date newd) {
+		date d = newd;
+		int day = d.getDay();
+		int month = d.getMonth();
+		int year = d.getYear();
+		
+		if (month > 12)
+			d.setMonth(12);
+		else if (month < 1)
+			d.setMonth(1);
+		else if (year < 1)
+			d.setYear(1);
+			
+		
+		boolean isleap = isLeap(year);
+		
+		if ((month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12) && day > 31) {
+			d.setDay(31);
+		} else if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30) {
+			d.setDay(30);
+		} else if ((month == 2 && isleap == true && day > 29) || (month == 2 && isleap == false && day > 28)) {
+			if (isLeap(year) == true)
+				d.setDay(29);
+			else d.setDay(28);
+		}
+		
+		return d;
 	}
 	
 	private boolean isLeap (int year) {

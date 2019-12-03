@@ -43,6 +43,7 @@ public class PrintOverdue extends GBDialog {
 			output = "There are no overdue books";
 		
 		outputArea.setText(output);
+		outputArea.setEditable(false);
 		revalidate();
 	}
 }

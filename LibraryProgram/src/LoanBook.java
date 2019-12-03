@@ -102,8 +102,9 @@ public class LoanBook extends GBDialog {
 				checkoutdate.isValid(checkoutdate);
 			} catch (Exception e) {
 				messageBox(e.getMessage());
-				
+				checkoutdate = checkoutdate.changeDate(checkoutdate);
 			}
+			
 			messageBox("You have checked out the book " + searchedbook.getTitle() + " by " + searchedbook.getAuthor() + " on " + checkoutdate.getMonth() + "/" + checkoutdate.getDay() + "/" + checkoutdate.getYear());
 			
 		}

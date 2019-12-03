@@ -17,6 +17,8 @@ public class LibraryGUI extends GBFrame {
 	JButton returnButton = addButton("Return a book",2,2,1,1);
 	JButton printBorrowedButton = addButton("Borrowed books",3,1,1,1);
 	JButton printOverdueButton = addButton("Overdue books",3,2,1,1);
+	JButton printallButton = addButton("All books",4,1,1,1);
+	JButton exitButton = addButton("Exit",4,2,1,1);
 	
 	ArrayList<Library> books = new ArrayList<Library>();
 	
@@ -79,6 +81,15 @@ public class LibraryGUI extends GBFrame {
 		if (buttonObj == printOverdueButton) {
 			PrintOverdue overdue = new PrintOverdue(this, books);
 			overdue.setVisible(true);
+		}
+		
+		if (buttonObj == printallButton) {
+			PrintAll all = new PrintAll(this, books);
+			all.setVisible(true);
+		}
+		
+		if (buttonObj == exitButton) {
+			System.exit(1);
 		}
 	}
 

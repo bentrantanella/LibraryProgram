@@ -28,6 +28,7 @@ public class PrintBorrowed extends GBDialog {
 			output = "There are no borrowed books";
 		
 		booksArea.setText(output);
+		booksArea.setEditable(false);
 	}
 	
 	JLabel printLabel = addLabel("All borrowed books:",1,1,1,1);
