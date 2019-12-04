@@ -45,7 +45,7 @@ public class LoanBook extends GBDialog {
 	
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == searchButton) {
-			if(searchField.getText().contentEquals("") == true) {
+			if(searchField.getText().equalsIgnoreCase("") == true) {
 				messageBox("Enter a title");
 				return;
 			}

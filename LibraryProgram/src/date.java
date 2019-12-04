@@ -44,10 +44,12 @@ public class date {
 		int month = newdate.getMonth();
 		int year = newdate.getYear();
 		
-		if (month > 12 || month < 0) {
+		if (month > 12 || month <= 0) {
 			throw new InvalidInput("Invalid month");
-		} else if (year < 0) {
+		} else if (year <= 0) {
 			throw new InvalidInput("Invalid year");
+		} else if (day <= 0) {
+			throw new InvalidInput("Invalid day");
 		}
 		
 		boolean isleap = isLeap(year);
@@ -70,11 +72,12 @@ public class date {
 		
 		if (month > 12)
 			d.setMonth(12);
-		else if (month < 1)
+		if (month < 1)
 			d.setMonth(1);
-		else if (year < 1)
+		if (year < 1)
 			d.setYear(1);
-			
+		if (day < 1)
+			d.setDay(1);
 		
 		boolean isleap = isLeap(year);
 		

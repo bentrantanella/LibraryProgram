@@ -36,7 +36,7 @@ public class Search extends GBDialog {
 			}
 			String output = "";
 			for(int j = 0; j < abook.size(); j++) {
-				if (searchField.getText().equals(booktitles[j]) == true) {
+				if (searchField.getText().equalsIgnoreCase(booktitles[j]) == true) {
 					Library searchedbook = abook.get(j);
 					output = output + "Title: " + searchedbook.getTitle() + "\n" +  "Author: " + searchedbook.getAuthor() + "\n" + "Checked out: " + searchedbook.checkBorrowed() + "\n";
 					
