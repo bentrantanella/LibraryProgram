@@ -103,7 +103,7 @@ public class LoanBook extends GBDialog {
 		}
 		
 		if (buttonObj == checkoutButton) {
-			if(nameField.getText().contentEquals("") == true) {
+			if(nameField.getText().contentEquals("") == true || checkWhitespace(nameField.getText()) == true) {
 				messageBox("Enter a name");
 				return;
 			}
