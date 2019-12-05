@@ -16,7 +16,7 @@ public class PrintOverdue extends GBDialog {
 		outputArea.setVisible(false);
 	}
 	
-	JLabel dateLabel = addLabel("Enter the current date",1,1,1,1);
+	JLabel dateLabel = addLabel("Enter a date",1,1,1,1);
 	JLabel monthLabel = addLabel("Month:", 2,1,1,1);
 	IntegerField monthField = addIntegerField(0,2,2,1,1);
 	JLabel dayLabel = addLabel("Day:", 3,1,1,1);
