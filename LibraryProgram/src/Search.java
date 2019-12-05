@@ -24,7 +24,7 @@ public class Search extends GBDialog {
 
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == searchButton) {
-			if(searchField.getText().contentEquals("") == true) {
+			if(searchField.getText().contentEquals("") == true || checkWhitespace(searchField.getText()) == true) {
 				messageBox("Enter a title");
 				return;
 			}
@@ -55,6 +55,14 @@ public class Search extends GBDialog {
 			outputArea.setText(output);
 			outputArea.setEditable(false);
 		}
+	}
+	
+	private boolean checkWhitespace(String str) {
+		for(int j = 0; j < str.length(); j++) {
+			if(str.charAt(j) != ' ')
+				return false;
+		}
+		return true;
 	}
 
 }

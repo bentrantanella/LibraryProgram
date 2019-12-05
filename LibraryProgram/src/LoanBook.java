@@ -45,7 +45,7 @@ public class LoanBook extends GBDialog {
 	
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == searchButton) {
-			if(searchField.getText().equalsIgnoreCase("") == true) {
+			if(searchField.getText().equals("") == true || checkWhitespace(searchField.getText()) == true) {
 				messageBox("Enter a title");
 				return;
 			}
@@ -60,7 +60,7 @@ public class LoanBook extends GBDialog {
 			
 			boolean found = false;
 			for(int j = 0; j < abook.size(); j++) {
-				if (title.equals(booktitles[j]) == true) {
+				if (title.equalsIgnoreCase(booktitles[j]) == true) {
 					searchedbook = abook.get(j);
 					if(searchedbook.checkBorrowed() == true)
 						continue;
@@ -148,5 +148,13 @@ public class LoanBook extends GBDialog {
 		if (buttonObj == exitButton) {
 			dispose();
 		}
+	}
+	
+	private boolean checkWhitespace(String str) {
+		for(int j = 0; j < str.length(); j++) {
+			if(str.charAt(j) != ' ')
+				return false;
+		}
+		return true;
 	}
 }

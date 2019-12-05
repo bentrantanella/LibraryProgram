@@ -24,19 +24,25 @@ public class NewBookInput extends GBDialog {
 	
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == enterButton) {
-			if (titleField.getText().equals("")) {
+			if (titleField.getText().equals("") || checkWhitespace(titleField.getText()) == true) {
 				messageBox("Please enter a title");
 				return;
-			} else if (authorField.getText().equals("")) {
+			} else if (authorField.getText().equals("") || checkWhitespace(authorField.getText()) == true) {
 				messageBox("Please enter an author");
 				return;
 			} else {
 				abook.add(new Library(titleField.getText(), authorField.getText(), null, null,false));
 				dispose();
 			}
+		}	
+	}
+	
+	private boolean checkWhitespace(String str) {
+		for(int j = 0; j < str.length(); j++) {
+			if(str.charAt(j) != ' ')
+				return false;
 		}
-		
-		
+		return true;
 	}
 	
 	

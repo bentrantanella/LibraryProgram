@@ -23,7 +23,7 @@ private ArrayList<Library> abook = new ArrayList<Library>();
 	public void buttonClicked(JButton buttonObj) {
 		if (buttonObj == returnButton) {
 			for(Library b : abook) {
-				if (returnField.getText().equalsIgnoreCase(b.getTitle())) {
+				if (returnField.getText().equalsIgnoreCase(b.getTitle()) == true) {
 					found = true;
 					rbook = b;
 				}
